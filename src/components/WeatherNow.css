@@ -1,0 +1,17 @@
+.font-size-location {
+    font-size: 30px;
+    line-height: 50px;
+    
+}
+.font-size-temp {
+    font-size: 60px;
+    line-height: 36px;
+}
+.font-size-weather {
+    font-size: 18px;
+    line-height: 12px;
+}
+.font-size-description {
+    font-size: 20px;
+    font-weight: bold;
+}
