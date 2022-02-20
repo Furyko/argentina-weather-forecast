@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import './WeatherNow.css';
+import WeatherImage from './WeatherImage';
 
 function WeatherNow() {
     const [weatherNow, setWeatherNow] = useState([]);
@@ -22,14 +23,7 @@ function WeatherNow() {
         <div className='container mt-5 card p-2'>
             {weatherNow.weather ? 
             <div className='row'>
-                <div className='col d-flex justify-content-center'>
-                    <img 
-                    src='' 
-                    alt='cargando...'
-                    width='260px'
-                    height='260px'/>
-                </div>
-                
+                <WeatherImage description={weatherNow.weather.description}/>
                 <div className='col'>
                     <p className='font-size-location'>{weatherNow.name}, {weatherNow.province}</p>
                     <div>
