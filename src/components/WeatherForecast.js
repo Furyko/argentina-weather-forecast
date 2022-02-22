@@ -41,10 +41,10 @@ function WeatherForecast() {
         console.log('Setted');
     }
     return (
-        <div className='container mt-4'>
-            {forecast.forecastThreeDays ?
+        <div className='container mb-4'>
+            {forecast.forecastTomorrow && forecast.forecastTwoDays && forecast.forecastThreeDays ?
             <div className='row'>
-                <div className='col'>
+                <div className='col mt-4'>
                     <div className='card' style={{minWidth: "200px"}}>
                         <div className='card-header d-flex justify-content-center'>Mañana</div>
                         <div className='card-body'>
@@ -57,7 +57,7 @@ function WeatherForecast() {
                         </div>
                     </div>
                 </div>
-                <div className='col'>
+                <div className='col mt-4'>
                     <div className='card' style={{minWidth: "200px"}}>
                         <div className='card-header d-flex justify-content-center'>En dos días</div>
                         <div className='card-body'>
@@ -70,7 +70,7 @@ function WeatherForecast() {
                         </div>
                     </div>
                 </div>
-                <div className='col'>
+                <div className='col mt-4'>
                     <div className='card' style={{minWidth: "200px"}}>
                         <div className='card-header d-flex justify-content-center'>En tres días</div>
                         <div className='card-body'>
@@ -85,7 +85,7 @@ function WeatherForecast() {
                 </div>
             </div> : 
             <div className='d-grid gap-2'>
-                <button className='btn btn-light' onClick={settingForecast}>Ver pronóstico a tres días</button>
+                <button className='btn btn-light mt-4' onClick={settingForecast}>Ver pronóstico a tres días</button>
             </div>}
         </div>
     )
