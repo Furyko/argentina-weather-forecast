@@ -1,7 +1,6 @@
 .font-size-location {
     font-size: 30px;
     line-height: 50px;
-    
 }
 .font-size-temp {
     font-size: 60px;
@@ -14,4 +13,10 @@
 .font-size-description {
     font-size: 20px;
     font-weight: bold;
+}
+.font-size-forecast-temp {
+    font-size: 36px;
+}
+.font-size-location-list {
+    font-size: 30px;
 }
