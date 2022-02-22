@@ -11,7 +11,6 @@ function WeatherNow() {
          .then(function (response) {
              for (let x in response.data) {
                 if (response.data[x].name === 'Presidencia Roque Sáenz Peña' && response.data[x].province === 'Chaco') {
-                    console.log(response.data[x]);
                     setWeatherNow(response.data[x]);
                     break;
                 }

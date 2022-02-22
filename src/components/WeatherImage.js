@@ -34,6 +34,8 @@ function WeatherImage(props) {
             } else {
                 setImage(Nublado);
             }
+        } else {
+            setImage(Nublado);
         }
     }, [])
     return (
