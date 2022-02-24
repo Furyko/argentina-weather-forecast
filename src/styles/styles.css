@@ -20,3 +20,24 @@
 .font-size-location-list {
     font-size: 30px;
 }
+.float {
+	position: fixed;
+	width: 60px;
+	height: 60px;
+	bottom: 40px;
+	right: 40px;
+	background-color: rgb(218, 0, 0);
+	color: #FFF;
+	border-radius: 50px;
+	text-align: center;
+    border: 2px solid rgb(218, 0, 0);
+}
+.arrow {
+    border: solid #FFF;
+    border-width: 0 6px 6px 0;
+    display: inline-block;
+    padding: 10px;
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    margin-top: 20px;
+}

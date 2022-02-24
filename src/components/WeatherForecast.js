@@ -4,15 +4,17 @@ import '../styles/styles.css';
 
 function WeatherForecast() {
     var [forecast, setForecast] = useState({});
-    var [forecastTomorrow, setForecastTomorrow] = useState({});
-    var [forecastTwoDays, setForecastTwoDays] = useState({});
-    var [forecastThreeDays, setForecastThreeDays] = useState({});
+    var [forecastTomorrow, setForecastTomorrow] = useState({weather: {morning_temp: ''}});
+    var [forecastTwoDays, setForecastTwoDays] = useState({weather: {morning_temp: ''}});
+    var [forecastThreeDays, setForecastThreeDays] = useState({weather: {morning_temp: ''}});
     useEffect(() => {
         axios.get('https://ws.smn.gob.ar/map_items/forecast/1')
             .then(function (response) {
                 for (let x in response.data) {
                     if (response.data[x].name === 'Presidencia Roque Sáenz Peña' && response.data[x].province === 'Chaco') {
-                        setForecastTomorrow(response.data[x]);
+                        if (response.data[x].weather.day !== forecastTomorrow.weather.day) {
+                            setForecastTomorrow(response.data[x]);
+                        }
                         break;
                     }
                  }
@@ -21,7 +23,9 @@ function WeatherForecast() {
             .then(function (response) {
                 for (let x in response.data) {
                     if (response.data[x].name === 'Presidencia Roque Sáenz Peña' && response.data[x].province === 'Chaco') {
-                        setForecastTwoDays(response.data[x]);
+                        if (response.data[x].weather.day !== forecastTwoDays.weather.day) {
+                            setForecastTwoDays(response.data[x]);
+                        }
                         break;
                     }
                  }
@@ -30,16 +34,15 @@ function WeatherForecast() {
             .then(function (response) {
                 for (let x in response.data) {
                     if (response.data[x].name === 'Presidencia Roque Sáenz Peña' && response.data[x].province === 'Chaco') {
-                        setForecastThreeDays(response.data[x]);
+                        if (response.data[x].weather.day !== forecastThreeDays.weather.day) {
+                            setForecastThreeDays(response.data[x]);
+                        }
                         break;
                     }
                  }
             })
-    }, [])
-    const settingForecast = () => {
-        setForecast({forecastTomorrow, forecastTwoDays, forecastThreeDays})
-        console.log('Setted');
-    }
+        setForecast({forecastTomorrow, forecastTwoDays, forecastThreeDays});
+    }, [forecastTomorrow, forecastTwoDays, forecastThreeDays])
     return (
         <div className='container mb-4'>
             {forecast.forecastTomorrow && forecast.forecastTwoDays && forecast.forecastThreeDays ?
@@ -84,9 +87,7 @@ function WeatherForecast() {
                     </div>
                 </div>
             </div> : 
-            <div className='d-grid gap-2'>
-                <button className='btn btn-light mt-4' onClick={settingForecast}>Ver pronóstico a tres días</button>
-            </div>}
+            <div></div>}
         </div>
     )
 }
