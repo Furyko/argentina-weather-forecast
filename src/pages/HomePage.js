@@ -37,7 +37,7 @@ function HomePage() {
     }
 
     const getLocationId = (lat, lon) => {
-        axios.get(`http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${process.env.REACT_APP_ACCUWEATHER_API_KEY}&q=${lat}%2C${lon}&details=true`)
+        axios.get(`https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${process.env.REACT_APP_ACCUWEATHER_API_KEY}&q=${lat}%2C${lon}&details=true`)
             .then(function (res) {
                 if (res.data) {
                     setLocationData(res.data)
