@@ -8,35 +8,7 @@ import ParcialmenteNubladoLluvia from '../images/weather-parcialmente-nublado-co
 function WeatherImage(props) {
     const [image, setImage] = useState('');
     useEffect(() => {
-        if (props.description.toLowerCase().includes('despejado')) {
-            setImage(Despejado);
-        } else if (props.description.toLowerCase().includes('parcialmente nublado')) {
-            if (props.description.toLowerCase().includes('lluvia') || props.description.toLowerCase().includes('llovizna')) {
-                setImage(ParcialmenteNubladoLluvia);
-            } else {
-                setImage(ParcialmenteNublado);
-            }
-        } else if (props.description.toLowerCase().includes('algo nublado')) {
-            if (props.description.toLowerCase().includes('lluvia') || props.description.toLowerCase().includes('llovizna')) {
-                setImage(ParcialmenteNubladoLluvia);
-            } else {
-                setImage(ParcialmenteNublado);
-            }
-        } else if (props.description.toLowerCase().includes('nublado')) {
-            if (props.description.toLowerCase().includes('lluvia') || props.description.toLowerCase().includes('llovizna')) {
-                setImage(NubladoLluvia);
-            } else {
-                setImage(Nublado);
-            }
-        } else if (props.description.toLowerCase().includes('cubierto')) {
-            if (props.description.toLowerCase().includes('lluvia') || props.description.toLowerCase().includes('llovizna')) {
-                setImage(NubladoLluvia);
-            } else {
-                setImage(Nublado);
-            }
-        } else {
-            setImage(Nublado);
-        }
+        setImage(`https://www.accuweather.com//images/weathericons/${props.imageId}.svg`);
     }, [])
     return (
         <div className='col d-flex justify-content-center'>

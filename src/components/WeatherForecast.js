@@ -43,13 +43,13 @@ function WeatherForecast() {
                             <div className='card-header d-flex justify-content-center'>{ getDayName(day.Date) }</div>
                             <div className='card-body'>
                                 <div className='d-flex justify-content-around'>
-                                    <p className='d-flex justify-content-center font-size-forecast-temp'>{ getTemperature(day.Temperature.Minimum) }</p>
+                                    <p className='d-flex justify-content-center font-size-forecast-temp'>{ getTemperature(day.Temperature.Minimum) }/</p>
                                     <p className='d-flex justify-content-center font-size-forecast-temp'>{ getTemperature(day.Temperature.Maximum) }</p>
                                 </div>
-                                <p className='d-flex justify-content-center'>Por el día</p>
+                                <h5 className='d-flex justify-content-center'>Por el día</h5>
                                 <p>{ day.Day.IconPhrase }</p>
                                 <p>{ day.Day.HasPrecipitation ? 'Con presipitaciones' : 'Sin precipitaciones'}</p>
-                                <p className='d-flex justify-content-center'>Por la noche</p>
+                                <h5 className='d-flex justify-content-center'>Por la noche</h5>
                                 <p>{ day.Night.IconPhrase }</p>
                                 <p>{ day.Night.HasPrecipitation ? 'Con presipitaciones' : 'Sin precipitaciones'}</p>
                             </div>

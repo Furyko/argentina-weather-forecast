@@ -7,31 +7,25 @@ function WeatherNow() {
     const [weatherNow, setWeatherNow] = useState([]);
 
     useEffect(() => (
-        axios.get('https://ws.smn.gob.ar/map_items/weather')
-         .then(function (response) {
-             for (let x in response.data) {
-                if (response.data[x].name === 'Presidencia Roque Sáenz Peña' && response.data[x].province === 'Chaco') {
-                    setWeatherNow(response.data[x]);
-                    break;
-                }
-             }
+        axios.get(`https://dataservice.accuweather.com/currentconditions/v1/8127?apikey=${process.env.REACT_APP_ACCUWEATHER_API_KEY}`)
+         .then((res) => {
+            const data = res.data[0]
+            console.log(data)
+            setWeatherNow(data);
          })
     ), [])
 
     return (
         <div className='container mt-5 card p-2'>
-            {weatherNow.weather ? 
+            { weatherNow.WeatherText ? 
             <div className='row'>
-                <WeatherImage description={weatherNow.weather.description}/>
-                <div className='col'>
-                    <p className='font-size-location'>{weatherNow.name}, {weatherNow.province}</p>
+                <WeatherImage imageId={ weatherNow.WeatherIcon }/>
+                <div className='col d-flex align-items-center'>
+                    {/*<p className='font-size-location'>{weatherNow.name}, {weatherNow.province}</p>*/}
                     <div>
-                        <p className='font-size-temp'>{weatherNow.weather.tempDesc}</p>
-                        <p className='font-size-description'>{weatherNow.weather.description}</p>
-                        <p className='font-size-weather'>Humedad: {weatherNow.weather.humidity}%</p>
-                        <p className='font-size-weather'>Presion: {weatherNow.weather.pressure}</p>
-                        <p className='font-size-weather'>Visibilidad: {weatherNow.weather.visibility}</p>
-                        <p className='font-size-weather'>Viento: {weatherNow.weather.wind_speed} km/h {weatherNow.weather.wing_deg}</p>
+                        <p className='font-size-temp'>{weatherNow.Temperature.Metric.Value}°{weatherNow.Temperature.Metric.Unit}</p>
+                        <p className='font-size-description'>{weatherNow.WeatherText}</p>
+                        <p className='font-size-weather'>{ weatherNow.HasPrecipitation ? 'Sin precipitaciones' : 'Con precipitaciones' }</p>
                     </div>
                 </div>
             </div> : <p className='d-flex justify-content-center font-size-description'>Cargando...</p>}
