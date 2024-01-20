@@ -2,16 +2,16 @@ import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import '../styles/styles.css';
 
-function WeatherForecast() {
+function WeatherForecast({ locationData }) {
     var [forecast, setForecast] = useState({});
 
     useEffect(() => {
-        axios.get(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/8127?apikey=${process.env.REACT_APP_ACCUWEATHER_API_KEY}`)
+        axios.get(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationData.Key}?apikey=${process.env.REACT_APP_ACCUWEATHER_API_KEY}`)
             .then(function (res) {
                 if (res.data) setForecast(res.data);
                 console.log(res.data)
             })
-    }, [])
+    }, [ locationData ])
 
     /* Utilities */
     const getDayName = (dateString) => {

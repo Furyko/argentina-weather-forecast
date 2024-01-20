@@ -3,17 +3,17 @@ import axios from 'axios';
 import WeatherImage from './WeatherImage';
 import '../styles/styles.css';
 
-function WeatherNow() {
+function WeatherNow({ locationData }) {
     const [weatherNow, setWeatherNow] = useState([]);
 
     useEffect(() => (
-        axios.get(`https://dataservice.accuweather.com/currentconditions/v1/8127?apikey=${process.env.REACT_APP_ACCUWEATHER_API_KEY}`)
+        axios.get(`https://dataservice.accuweather.com/currentconditions/v1/${locationData.Key}?apikey=${process.env.REACT_APP_ACCUWEATHER_API_KEY}`)
          .then((res) => {
             const data = res.data[0]
             console.log(data)
             setWeatherNow(data);
          })
-    ), [])
+    ), [locationData])
 
     return (
         <div className='container mt-5 card p-2'>
@@ -21,8 +21,8 @@ function WeatherNow() {
             <div className='row'>
                 <WeatherImage imageId={ weatherNow.WeatherIcon }/>
                 <div className='col d-flex align-items-center'>
-                    {/*<p className='font-size-location'>{weatherNow.name}, {weatherNow.province}</p>*/}
                     <div>
+                        <span className='font-size-location'>{ locationData.LocalizedName }</span>
                         <p className='font-size-temp'>{weatherNow.Temperature.Metric.Value}°{weatherNow.Temperature.Metric.Unit}</p>
                         <p className='font-size-description'>{weatherNow.WeatherText}</p>
                         <p className='font-size-weather'>{ weatherNow.HasPrecipitation ? 'Sin precipitaciones' : 'Con precipitaciones' }</p>
