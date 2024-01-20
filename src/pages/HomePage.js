@@ -3,6 +3,7 @@ import axios from 'axios';
 import Navbar from '../components/Navbar';
 import WeatherNow from '../components/WeatherNow';
 import WeatherForecast from '../components/WeatherForecast';
+import Footer from '../components/Footer';
 
 function HomePage() {
     const [ locationData, setLocationData ] = useState()
@@ -56,6 +57,7 @@ function HomePage() {
                     </> :
                     <div>Cargando...</div>
                 }
+            <Footer/>
         </div>
     )
 }
