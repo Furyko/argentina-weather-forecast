@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import Navbar from '../components/Navbar';
+import SearchBar from '../components/SearchBar';
 import WeatherNow from '../components/WeatherNow';
 import WeatherForecast from '../components/WeatherForecast';
 import Footer from '../components/Footer';
+
+export const LocationDataContext = createContext(null)
 
 function HomePage() {
     const [ locationData, setLocationData ] = useState()
 
     useEffect(() => {
-        getCoordinates()
+        // getCoordinates()
     }, [])
 
     const getCoordinates = () => {
@@ -50,13 +53,23 @@ function HomePage() {
     return (
         <div>
             <Navbar/>
-                { locationData ? 
-                    <>
-                        <WeatherNow locationData={locationData}/>
-                        <WeatherForecast locationData={locationData}/>
-                    </> :
-                    <div>Cargando...</div>
-                }
+            <LocationDataContext.Provider value={{ locationData, setLocationData }}>
+                <SearchBar/>
+                    { locationData ? 
+                        <>
+                            <WeatherNow locationData={locationData}/>
+                            <WeatherForecast locationData={locationData}/>
+                        </> :
+                        <div className='container'>
+                            <div className='card'>
+                                <div className='card-body'>
+                                <h5 class="card-title">¡Bienvenido!</h5>
+                                <p class="card-text">Busque una ciudad para ver el clima.</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+            </LocationDataContext.Provider>
             <Footer/>
         </div>
     )

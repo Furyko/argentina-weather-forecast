@@ -12,20 +12,20 @@ function WeatherNow({ locationData }) {
             const data = res.data[0]
             console.log(data)
             setWeatherNow(data);
-         })
-    ), [locationData])
+        })
+    ), [ locationData ])
 
     return (
-        <div className='container mt-5 card p-2'>
+        <div className='container mt-4 card p-2'>
             { weatherNow.WeatherText ? 
             <div className='row'>
                 <WeatherImage imageId={ weatherNow.WeatherIcon }/>
                 <div className='col d-flex align-items-center'>
                     <div>
-                        <span className='font-size-location'>{ locationData.LocalizedName }</span>
+                        <span className='font-size-location'>{ locationData.LocalizedName }, { locationData.AdministrativeArea.LocalizedName }</span>
                         <p className='font-size-temp'>{weatherNow.Temperature.Metric.Value}°{weatherNow.Temperature.Metric.Unit}</p>
                         <span className='font-size-description'>ST: { weatherNow.RealFeelTemperatureShade.Metric.Value }°{ weatherNow.RealFeelTemperatureShade.Metric.Unit }</span>
-                        <p className='font-size-description'>{weatherNow.WeatherText}</p>
+                        <p className='font-size-description'>{ weatherNow.WeatherText }</p>
                         <p className='font-size-weather'>{ weatherNow.HasPrecipitation ? 'Con precipitaciones' : 'Sin precipitaciones' }</p>
                         <p className='font-size-weather'>Humedad: { weatherNow.RelativeHumidity }</p>
                         <p className='font-size-weather'>Viento: { weatherNow.Wind.Speed.Metric.Value } { weatherNow.Wind.Speed.Metric.Unit } { weatherNow.Wind.Direction.Degrees } { weatherNow.Wind.Direction.Localized }</p>
@@ -33,7 +33,7 @@ function WeatherNow({ locationData }) {
                         <p className='font-size-weather'>Visibilidad: { weatherNow.Visibility.Metric.Value } { weatherNow.Visibility.Metric.Unit }</p>
                     </div>
                 </div>
-            </div> : <p className='d-flex justify-content-center font-size-description'>Cargando...</p>}
+            </div> : <p className='d-flex justify-content-center font-size-description'>Cargando...</p> }
         </div>
     )
 }

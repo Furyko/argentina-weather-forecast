@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 
-function WeatherImage(props) {
+function WeatherImage({ imageId }) {
     const [image, setImage] = useState('');
     useEffect(() => {
-        setImage(`https://www.accuweather.com/images/weathericons/${props.imageId}.svg`);
-    }, [])
+        setImage(`https://www.accuweather.com/images/weathericons/${imageId}.svg`);
+    }, [ imageId ])
     return (
-        <div className='col d-flex justify-content-center'>
+        <div className='col d-flex justify-content-center align-items-center'>
             <img 
             src={image}
             alt='Imagen'

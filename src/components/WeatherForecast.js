@@ -34,7 +34,7 @@ function WeatherForecast({ locationData }) {
     }
 
     return (
-        <div className='container mb-4'>
+        <div className='container'>
             { forecast.DailyForecasts ?
             <div className='row'>
                 { forecast.DailyForecasts.map((day, index) => 
