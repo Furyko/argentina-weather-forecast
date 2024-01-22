@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { LocationDataContext } from '../pages/HomePage';
 
@@ -17,7 +17,7 @@ function SearchBar() {
     }
 
     return (
-        <div className="container mt-4">
+        <div className={"container d-flex align-items-center " + (locationData ? "mt-4" : "vh-100")}>
             <div className="input-group mb-3">
                 <input type="text" className="form-control" placeholder="Busca una ciudad (Ejemplo: San Miguel, Buenos Aires)" onChange={(e) => setCityName(e.target.value)}/>
                 <button className="btn btn-primary" type="button" onClick={onSearchAction}>Buscar</button>

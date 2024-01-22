@@ -60,14 +60,7 @@ function HomePage() {
                             <WeatherNow locationData={locationData}/>
                             <WeatherForecast locationData={locationData}/>
                         </> :
-                        <div className='container'>
-                            <div className='card'>
-                                <div className='card-body'>
-                                <h5 class="card-title">¡Bienvenido!</h5>
-                                <p class="card-text">Busque una ciudad para ver el clima.</p>
-                                </div>
-                            </div>
-                        </div>
+                        <></>
                     }
             </LocationDataContext.Provider>
             <Footer/>
