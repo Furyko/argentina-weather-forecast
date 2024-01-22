@@ -1,18 +1,20 @@
 import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { LocationDataContext } from '../pages/HomePage';
+import ReachedLimitModal from './ReachedLimitModal'
 
 function SearchBar() {
     const [ cityName, setCityName ] = useState()
     const [ cityStaticName, setCityStaticName ] = useState()
     const [ showAlert, setShowAlert ] = useState(false)
     const { locationData, setLocationData } = useContext(LocationDataContext)
+    const [modalShow, setModalShow] = useState(false);
 
     const onSearchAction = () => {
         console.log("city: ",cityName)
         setCityStaticName(cityName)
         axios.get(`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=${process.env.REACT_APP_ACCUWEATHER_API_KEY}&q=${cityName}&details=true`)
-         .then((res) => {
+        .then((res) => {
             console.log(res.data)
             console.log("key",res.data[0]?.Key)
             console.log(res.data.length)
@@ -22,7 +24,11 @@ function SearchBar() {
                 setShowAlert(false)
             }
             setLocationData(res.data[0])
-         })
+        })
+        .catch((err) => {
+            console.log(err)
+            setModalShow(true)
+        })
     }
 
     const onPressAlertButton = () => {
@@ -43,6 +49,11 @@ function SearchBar() {
                     </div> :
                     <></>
                 }
+
+                <ReachedLimitModal
+                    show={modalShow}
+                    onHide={() => setModalShow(false)}
+                />
             </div>
         </div>
     )
