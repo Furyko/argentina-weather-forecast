@@ -11,7 +11,7 @@ function SearchBar() {
     const onSearchAction = () => {
         console.log("city: ",cityName)
         setCityStaticName(cityName)
-        axios.get(`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${process.env.REACT_APP_ACCUWEATHER_API_KEY}&q=${cityName}&details=true`)
+        axios.get(`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=${process.env.REACT_APP_ACCUWEATHER_API_KEY}&q=${cityName}&details=true`)
          .then((res) => {
             console.log(res.data)
             console.log("key",res.data[0]?.Key)
