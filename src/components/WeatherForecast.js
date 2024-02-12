@@ -48,10 +48,10 @@ function WeatherForecast({ locationData }) {
                                 </div>
                                 <h5 className='d-flex justify-content-center'>Por el día</h5>
                                 <p>{ day.Day.IconPhrase }</p>
-                                <p>{ day.Day.HasPrecipitation ? 'Con presipitaciones' : 'Sin precipitaciones'}</p>
+                                <p>{ day.Day.HasPrecipitation ? 'Con precipitaciones' : 'Sin precipitaciones'}</p>
                                 <h5 className='d-flex justify-content-center'>Por la noche</h5>
                                 <p>{ day.Night.IconPhrase }</p>
-                                <p>{ day.Night.HasPrecipitation ? 'Con presipitaciones' : 'Sin precipitaciones'}</p>
+                                <p>{ day.Night.HasPrecipitation ? 'Con precipitaciones' : 'Sin precipitaciones'}</p>
                             </div>
                         </div>
                     </div>
