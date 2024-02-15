@@ -7,8 +7,9 @@ function SearchBar() {
     const [ cityName, setCityName ] = useState()
     const [ cityStaticName, setCityStaticName ] = useState()
     const [ showAlert, setShowAlert ] = useState(false)
+    const [ showDescription, setShowDescription ] = useState(true)
     const { locationData, setLocationData } = useContext(LocationDataContext)
-    const [modalShow, setModalShow] = useState(false);
+    const [ modalShow, setModalShow ] = useState(false);
 
     const onSearchAction = () => {
         console.log("city: ",cityName)
@@ -35,9 +36,21 @@ function SearchBar() {
         setShowAlert(false)
     }
 
+    const onPressDescriptionButton = () => {
+        setShowDescription(false)
+    }
+
     return (
         <div className={"container d-flex align-items-center " + (locationData ? "mt-4" : "vh-100")}>
             <div className='input-group mb-3 justify-content-center'>
+                { showDescription ?
+                    <div className={"alert alert-info alert-dismissible fade mt-3 show"}>
+                        <span class="material-symbols-outlined">partly_cloudy_day</span>
+                        Busca una ciudad para ver su clima
+                        <button type="button" className="btn-close" onClick={onPressDescriptionButton}></button>
+                    </div> :
+                    <></>
+                }
                 <div className="input-group">
                     <input type="text" className="form-control" placeholder="Busca una ciudad (Ejemplo: San Miguel, Buenos Aires)" onChange={(e) => setCityName(e.target.value)}/>
                     <button className="btn btn-primary" type="button" onClick={onSearchAction}>Buscar</button>
