@@ -6,7 +6,6 @@ import './NotFoundPage.css';
 function NotFoundPage() {
     return (
         <div>
-            <Navbar/>
             <div className='d-flex justify-content-center vh-100 align-items-center'>
                 <div className='card'>
                     <div className='card-body font-size-not-found'>404 Not Found</div>

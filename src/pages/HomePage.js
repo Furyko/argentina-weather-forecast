@@ -1,10 +1,8 @@
 import React, { createContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import Navbar from '../components/Navbar';
 import SearchBar from '../components/SearchBar';
 import WeatherNow from '../components/WeatherNow';
 import WeatherForecast from '../components/WeatherForecast';
-import Footer from '../components/Footer';
 
 export const LocationDataContext = createContext(null)
 
@@ -52,7 +50,6 @@ function HomePage() {
 
     return (
         <div>
-            <Navbar/>
             <LocationDataContext.Provider value={{ locationData, setLocationData }}>
                 <SearchBar/>
                     { locationData ? 
@@ -63,7 +60,6 @@ function HomePage() {
                         <></>
                     }
             </LocationDataContext.Provider>
-            <Footer/>
         </div>
     )
 }
