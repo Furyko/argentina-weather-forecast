@@ -3,15 +3,17 @@ import axios from 'axios';
 import SearchBar from '../components/SearchBar';
 import WeatherNow from '../components/WeatherNow';
 import WeatherForecast from '../components/WeatherForecast';
+import {Link} from 'react-router-dom';
 
 export const LocationDataContext = createContext(null)
 
 function HomePage() {
     const [ locationData, setLocationData ] = useState()
+    const [ showIsCorrectCity, setShowIsCorrectCity ] = useState(false)
 
     useEffect(() => {
-        // getCoordinates()
-    }, [])
+        setShowIsCorrectCity(true)
+    }, [locationData])
 
     const getCoordinates = () => {
         function setLocation(position) {
@@ -48,17 +50,35 @@ function HomePage() {
             })
     }
 
+    const onPressIsCorrectCityButton = () => {
+        setShowIsCorrectCity(false)
+    }
+
     return (
         <div>
             <LocationDataContext.Provider value={{ locationData, setLocationData }}>
                 <SearchBar/>
-                    { locationData ? 
-                        <>
-                            <WeatherNow locationData={locationData}/>
-                            <WeatherForecast locationData={locationData}/>
-                        </> :
-                        <></>
-                    }
+                { showIsCorrectCity ?
+                    <div className={"container d-flex align-items-center " + (locationData ? "mt-4" : "vh-100")}>
+                        <div className='input-group mb-3 justify-content-center'>
+                            <div className={"alert alert-info alert-dismissible fade mt-3 show"}>
+                                <span className="material-symbols-outlined align-middle me-2">info</span>
+                                ¿No es la ciudad que buscas? Usa el siguiente formato: Ciudad, Provincia, País.
+                                <hr></hr>
+                                O usa la <Link className="active" aria-current="page" to='/lista'>herramienta para buscar nombres</Link>
+                                <button type="button" className="btn-close" onClick={onPressIsCorrectCityButton}></button>
+                            </div>
+                        </div>
+                    </div> :
+                    <></>
+                }
+                { locationData ? 
+                    <>
+                        <WeatherNow locationData={locationData}/>
+                        <WeatherForecast locationData={locationData}/>
+                    </> :
+                    <></>
+                }
             </LocationDataContext.Provider>
         </div>
     )

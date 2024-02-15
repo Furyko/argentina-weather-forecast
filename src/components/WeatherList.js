@@ -48,7 +48,9 @@ function WeatherList() {
                     { showDescription ?
                         <div className={"alert alert-info alert-dismissible fade mt-3 show"}>
                             <span className="material-symbols-outlined align-middle me-2">apartment</span>
-                            Hay muchas ciudades con nombres similares. Esta herramienta te va a mostrar esas ciudades para que puedas encontrar la tuya
+                            Hay muchas ciudades con nombres similares. Esta herramienta te va a mostrar esas ciudades para que puedas encontrar la tuya. 
+                            <hr></hr>
+                            Comienza escribiendo el nombre de tu ciudad.
                             <button type="button" className="btn-close" onClick={onPressDescriptionButton}></button>
                         </div> :
                         <></>
