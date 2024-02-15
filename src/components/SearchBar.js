@@ -45,7 +45,7 @@ function SearchBar() {
             <div className='input-group mb-3 justify-content-center'>
                 { showDescription ?
                     <div className={"alert alert-info alert-dismissible fade mt-3 show"}>
-                        <span className="material-symbols-outlined">partly_cloudy_day</span>
+                        <span className="material-symbols-outlined align-middle me-2">partly_cloudy_day</span>
                         Busca una ciudad para ver su clima
                         <button type="button" className="btn-close" onClick={onPressDescriptionButton}></button>
                     </div> :
