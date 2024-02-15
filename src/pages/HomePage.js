@@ -12,7 +12,7 @@ function HomePage() {
     const [ showIsCorrectCity, setShowIsCorrectCity ] = useState(false)
 
     useEffect(() => {
-        setShowIsCorrectCity(true)
+        if (locationData && locationData.Key) setShowIsCorrectCity(true)
     }, [locationData])
 
     const getCoordinates = () => {
@@ -59,8 +59,8 @@ function HomePage() {
             <LocationDataContext.Provider value={{ locationData, setLocationData }}>
                 <SearchBar/>
                 { showIsCorrectCity ?
-                    <div className={"container d-flex align-items-center " + (locationData ? "mt-4" : "vh-100")}>
-                        <div className='input-group mb-3 justify-content-center'>
+                    <div className={"container d-flex align-items-center"}>
+                        <div className='input-group justify-content-center'>
                             <div className={"alert alert-info alert-dismissible fade mt-3 show"}>
                                 <span className="material-symbols-outlined align-middle me-2">info</span>
                                 ¿No es la ciudad que buscas? Usa el siguiente formato: Ciudad, Provincia, País.
