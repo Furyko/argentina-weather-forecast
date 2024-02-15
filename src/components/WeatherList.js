@@ -91,9 +91,7 @@ function WeatherList() {
                     </div>
                     )}
                 </> : 
-                <div className='container mt-5 card p-2'>
-                    <p className='d-flex justify-content-center font-size-description'>Cargando lista...</p>
-                </div>
+                <></>
                 }
             </div>
         </>
